@@ -1,0 +1,24 @@
+{
+  "name": "nhsd-login",
+  "version": "1.0.0",
+  "description": "This script uses puppeteer to navigate to NHSD login page and get access_token",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/booshi/nhsd-login-docker.git"
+  },
+  "author": "Alex McCormick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/booshi/nhsd-login-docker/issues"
+  },
+  "homepage": "https://github.com/booshi/nhsd-login-docker#readme",
+  "dependencies": {
+    "puppeteer": "^5.1.0",
+    "node-fetch": "2.6.1"
+  }
+}
