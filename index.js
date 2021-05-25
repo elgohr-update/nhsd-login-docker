@@ -31,14 +31,20 @@ async function nhsdLogin(url) {
   const callbackUrlParams = new URLSearchParams(callbackUrl.search);
   const code = callbackUrlParams.get("code")
 
+  const formData = new FormData()
+  formData.append("code", code)
+  formData.append("grant_type", "authorization_code")
+  formData.append("redirect_uri", callbackUrl.origin + callbackUrl.pathname)
+  formData.append("client_id", process.env.REF_CLIENT_ID)
+  formData.append("client_secret", process.env.REF_CLIENT_SECRET)
+
   const baseUrl = new URL(url).origin
   const response = await fetch(`${baseUrl}/oauth2/token`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Basic ${process.env.AUTH_BEARER_TOKEN}`
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: `code=${code}&grant_type=authorization_code&redirect_uri=${callbackUrl.origin}${callbackUrl.pathname}`
+      body: formData
     })
     .then(res => res.json())
 
