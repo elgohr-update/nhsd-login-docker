@@ -35,8 +35,8 @@ async function nhsdLogin(url) {
   formData.append("code", code)
   formData.append("grant_type", "authorization_code")
   formData.append("redirect_uri", callbackUrl.origin + callbackUrl.pathname)
-  formData.append("client_id", process.env.REF_CLIENT_ID)
-  formData.append("client_secret", process.env.REF_CLIENT_SECRET)
+  formData.append("client_id", process.env.CLIENT_ID)
+  formData.append("client_secret", process.env.CLIENT_SECRET)
 
   const baseUrl = new URL(url).origin
   const response = await fetch(`${baseUrl}/oauth2/token`, {
